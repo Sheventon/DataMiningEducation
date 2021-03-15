@@ -11,7 +11,7 @@ from psycopg2 import OperationalError
 
 args = {
     'owner': 'shevanton',
-    'start_date': dt.datetime(2021, 3, 15),
+    'start_date': dt.datetime(2021, 3, 16),
     'retries': 1,
     'retry_delay': dt.timedelta(minutes=1),
     'depends_on_past': False,
@@ -127,7 +127,7 @@ def main():
     most_common_words(connection)
 
 
-with DAG(dag_id='titanic_pivot', default_args=args, schedule_interval=None) as dag:
+with DAG(dag_id='vk_parse', default_args=args, schedule_interval=None) as dag:
     main = PythonOperator(
         task_id='main',
         python_callable=main,
