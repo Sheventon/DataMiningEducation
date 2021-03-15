@@ -136,7 +136,7 @@ def main():
     most_common_words(connection)
 
 
-with DAG(dag_id='vk_parse', default_args=args, schedule_interval=None) as dag:
+with DAG(dag_id='titanic_pivot', default_args=default_args, schedule_interval=None) as dag:
     main = PythonOperator(
         task_id='main',
         python_callable=main,
