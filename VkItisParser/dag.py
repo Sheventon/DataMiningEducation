@@ -16,6 +16,7 @@ default_args = {
     'email': ['airflow@tores.fernando.real@gmail.com'],
     'email_on_failure': False,
     'email_on_retry': False,
+    'start_date': dt.datetime(2021, 3, 16),
     'retries': 3,
     'retry_delay': dt.timedelta(minutes=5),
 }
