@@ -53,7 +53,7 @@ def most_common_words(connection):
             else:
                 wordcount[word] += 1
 
-    n_print = int(input("How many most common words to print: "))
+    n_print = 100
     print("\nOK. The {} most common words are as follows\n".format(n_print))
     word_counter = collections.Counter(wordcount)
     for word, count in word_counter.most_common(n_print):
@@ -67,11 +67,11 @@ def init_database():
     config = configparser.ConfigParser()
     config.sections()
     config.read('application.ini')
-    db_name = config['LOCAL_DB']['db_name']
-    db_user = config['LOCAL_DB']['db_user']
-    db_password = config['LOCAL_DB']['db_password']
-    db_host = config['LOCAL_DB']['db_host']
-    db_port = config['LOCAL_DB']['db_port']
+    db_name = config['DB']['db_name']
+    db_user = config['DB']['db_user']
+    db_password = config['DB']['db_password']
+    db_host = config['DB']['db_host']
+    db_port = config['DB']['db_port']
     return db_name, db_user, db_password, db_host, db_port
 
 

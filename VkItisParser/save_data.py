@@ -1,7 +1,7 @@
 import psycopg2
 from psycopg2 import OperationalError
 
-sql = 'INSERT INTO "itis_words" values (%s, %s)'
+sql = 'INSERT INTO "itis_group_words" values (%s, %s)'
 
 
 def create_connection(db_name, db_user, db_password, db_host, db_port):
