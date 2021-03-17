@@ -9,23 +9,13 @@ from airflow.models import DAG
 from airflow.operators.python import PythonOperator
 from psycopg2 import OperationalError
 
-
 default_args = {
     'owner': 'shevanton',
     'depends_on_past': False,
-    'email': ['airflow@tores.fernando.real@gmail.com'],
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'start_date': dt.datetime(2021, 3, 16),
-    'retries': 3,
-    'retry_delay': dt.timedelta(minutes=5),
+    'start_date': dt.datetime(2021, 3, 15),
+    'retries': 2,
+    'retry_delay': dt.timedelta(seconds=10),
 }
-dag = DAG(
-    'tutorial',
-    default_args=default_args,
-    description='dag to parse vk group itis',
-    tags=['example'],
-)
 
 sql = 'INSERT INTO "itis_words" values (%s, %s)'
 
