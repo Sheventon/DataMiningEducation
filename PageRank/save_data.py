@@ -3,26 +3,26 @@ import configparser
 import psycopg2
 
 
-def deleteTable(cursor):
+def delete_table(cursor):
     cursor.execute("DROP TABLE IF EXISTS page_rank")
 
 
-def createTable(cursor):
+def create_table(cursor):
     cursor.execute('create table page_rank (link varchar not null, rank decimal(10, 9) not null)')
 
 
-def addLinkToTable(cursor, key, value):
+def add_link_to_table(cursor, key, value):
     cursor.execute("INSERT INTO page_rank (link, rank) VALUES (\'{}\', {})".format(str(key), value))
 
 
-def saveToDataBase(result):
+def save_to_data_base(result):
     config = configparser.ConfigParser()
     config.read('application.ini')
-    database = config['DB']['database']
-    user = config['DB']['user']
-    password = config['DB']['password']
-    host = config['DB']['host']
-    port = config['DB']['port']
+    database = config['EC2']['database']
+    user = config['EC2']['user']
+    password = config['EC2']['password']
+    host = config['EC2']['host']
+    port = config['EC2']['port']
     conn = psycopg2.connect(
         database=database,
         user=user,
@@ -31,9 +31,9 @@ def saveToDataBase(result):
         port=port
     )
     cursor = conn.cursor()
-    deleteTable(cursor)
-    createTable(cursor)
+    delete_table(cursor)
+    create_table(cursor)
     for (key, value) in result.items():
-        addLinkToTable(cursor, key, value)
+        add_link_to_table(cursor, key, value)
     conn.commit()
     conn.close()

@@ -1,5 +1,5 @@
 from node import Node
-from save_data import saveToDataBase
+from save_data import save_to_data_base
 from transiction_matrix import TransictionMatrix
 from web_spider import WebSpider, global_nodes
 
@@ -12,4 +12,4 @@ if __name__ == '__main__':
     spider = WebSpider(node, 0)
     matrix = TransictionMatrix(global_nodes)
     result = matrix.multiply_matrix()
-    saveToDataBase(result)
+    save_to_data_base(result)
